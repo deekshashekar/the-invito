@@ -7,7 +7,7 @@ interface HomePageProps {
   handleSignOut: () => Promise<void>;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ user, handleSignOut }) => {
+const HomePage: React.FC<HomePageProps> = ({ handleSignOut }) => {
   return (
     <div>
       <div className="min-h-screen bg-gradient-to-br from-sky-100 to-pink-100">
