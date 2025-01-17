@@ -1,7 +1,13 @@
 import { Link } from "@tanstack/react-router";
 
-// import { Link } from "@tanstack/react-router";
-const HomePage = ({ user, handleSignOut }) => {
+import { User } from "@supabase/supabase-js"
+
+interface HomePageProps {
+  user: User | null;  // Use 'User' type from Supabase
+  handleSignOut: () => Promise<void>;
+}
+
+const HomePage: React.FC<HomePageProps> = ({ user, handleSignOut }) => {
   return (
     <div>
       <div className="min-h-screen bg-gradient-to-br from-sky-100 to-pink-100">

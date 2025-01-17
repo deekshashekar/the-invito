@@ -1,7 +1,20 @@
+import { FC } from "react";
 import { CalendarIcon } from "../assets/CalendarIcon";
 import { LocationIcon } from "../assets/LocationIcon";
 
-const EventsItem = ({ events }) => {
+interface Event {
+  id: string;
+  event_name: string;
+  event_date: string;
+  event_description: string;
+  location: string;
+}
+
+interface EventsItemProps {
+  events: Event[]; 
+}
+
+  const EventsItem: FC<EventsItemProps> = ({ events }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
       {events?.map((el) => (

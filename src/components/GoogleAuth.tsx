@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { supabase } from "../api/supabaseClient";
 import { useAuthStore } from "../stores/authStore";
 import HomePage from "./HomePage";
+import toast from "react-hot-toast";
 
 const GoogleAuth = () => {
   const { user, setUser, clearUser } = useAuthStore();
@@ -33,6 +34,7 @@ const GoogleAuth = () => {
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
+    toast.success("Logged out Successfully!");
     if (error) {
       console.error("Error signing out:", error.message);
     } else {
