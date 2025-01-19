@@ -1,14 +1,7 @@
 import { FC } from "react";
 import { CalendarIcon } from "../assets/CalendarIcon";
 import { LocationIcon } from "../assets/LocationIcon";
-
-interface Event {
-  id: string;
-  event_name: string;
-  event_date: string;
-  event_description: string;
-  location: string;
-}
+import { Event } from "../types/event";
 
 interface EventsItemProps {
   events: Event[]; 

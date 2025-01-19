@@ -1,11 +1,5 @@
 import { supabase } from "../api/supabaseClient";
-
-interface Event {
-  event_name: string;
-  event_description: string;
-  event_date: string;
-  location: string;
-}
+import { Event } from "../types/event";
 
 export const addEachEvent = async (data: Event | Event[]) => {
   const { data: eventsData, error } = await supabase

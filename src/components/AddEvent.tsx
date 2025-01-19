@@ -3,13 +3,8 @@ import { addEachEvent as addEventToDb } from "../services/eventsService";
 import useEventsStore from "../store";
 import { Link } from "@tanstack/react-router";
 import toast from "react-hot-toast";
+import { Event } from "../types/event";
 
-type FormData = {
-  event_name: string;
-  event_description: string;
-  event_date: string;
-  location: string;
-};
 
 const AddEvents = () => {
   const { addEvent } = useEventsStore();
@@ -19,9 +14,9 @@ const AddEvents = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<Event>();
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = (data: Event) => {
     addEventToDb(data)
       .then((newEventData) => {
         addEvent(newEventData[0]);

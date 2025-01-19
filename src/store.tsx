@@ -1,5 +1,7 @@
 import { create } from "zustand";
 import { User as SupabaseUser } from "@supabase/supabase-js";
+import { Event } from "./types/event";
+
 
 interface AuthState {
   user: SupabaseUser | null;
@@ -7,13 +9,6 @@ interface AuthState {
   clearUser: () => void;
 }
 
-interface Event {
-  id: string;
-  event_name: string;
-  event_date: string;
-  event_description:string;
-  location: string;
-}
 
 interface EventsStore {
   events: Event[];

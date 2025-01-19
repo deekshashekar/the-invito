@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { User } from "@supabase/supabase-js"
 
 interface HomePageProps {
-  user: User | null;  // Use 'User' type from Supabase
+  user: User | null;  
   handleSignOut: () => Promise<void>;
 }
 
