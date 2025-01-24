@@ -5,7 +5,6 @@ import { Link } from "@tanstack/react-router";
 import toast from "react-hot-toast";
 import { Event } from "../types/event";
 
-
 const AddEvents = () => {
   const { addEvent } = useEventsStore();
 
@@ -131,7 +130,7 @@ const AddEvents = () => {
 
           <button
             type="submit"
-            className="w-full bg-sky-300 text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
+            className="w-full bg-sky-300 text-white font-semibold py-3 px-6 rounded-lg hover:bg-sky-500 transition-opacity"
           >
             Create Event
           </button>

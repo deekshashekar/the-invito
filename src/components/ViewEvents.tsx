@@ -1,4 +1,4 @@
-import { useEffect, } from "react";
+import { useEffect } from "react";
 import { fetchAllEvents } from "../services/eventsService";
 import useEventsStore from "../store";
 import EventsItem from "./EventsItem";
@@ -10,7 +10,11 @@ const ViewEvents = () => {
   const getEvents = async () => {
     try {
       const eventsAllData = await fetchAllEvents();
-      setEvents(eventsAllData); 
+      const sortedEvents = eventsAllData.sort(
+        (a, b) =>
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
+      setEvents(sortedEvents);
     } catch (error) {
       console.log(error);
     }
@@ -18,13 +22,16 @@ const ViewEvents = () => {
 
   useEffect(() => {
     getEvents();
-  }, [setEvents]);
+  }, [events, setEvents]);
   return (
-    <div>
-      <Link to="/" className="flex w-14 border-2 bg-sky-300 p-2 rounded-md">
-        Back
+    <div className="bg-sky-200">
+      <Link
+        to="/"
+        className="inline-flex items-center gap-2 text-blue-600 hover:text-sky-700 transition-colors mt-8 ml-6"
+      >
+        ← Back to Home
       </Link>
-      <p className=" flex justify-center font-bold text-3xl mt-6">
+      <p className=" flex justify-center font-bold text-3xl mb-9">
         All events are here
       </p>
       <EventsItem events={events} />

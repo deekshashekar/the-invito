@@ -2,22 +2,31 @@ import { FC } from "react";
 import { CalendarIcon } from "../assets/CalendarIcon";
 import { LocationIcon } from "../assets/LocationIcon";
 import { Event } from "../types/event";
+import { deleteEvent } from "../services/eventsService";
 
 interface EventsItemProps {
-  events: Event[]; 
+  events: Event[];
 }
 
-  const EventsItem: FC<EventsItemProps> = ({ events }) => {
+const EventsItem: FC<EventsItemProps> = ({ events }) => {
+  const handleDelete = (event_id: string) => {
+    const isConfirmed = confirm("Are you sure you want to delete this event?");
+    if (isConfirmed) {
+      deleteEvent(event_id);
+    }
+  };
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4 bg-sky-200">
       {events?.map((el) => (
         <div
           key={el.id}
           className="bg-white border bg-lime-100 rounded-xl overflow-hidden shadow-md hover:shadow-xl "
         >
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-3">
+          <div className=" p-6">
+            <h3 className="flex justify-between text-xl font-bold text-gray-800 mb-3">
               {el.event_name}
+              <button onClick={() => handleDelete(el.id)}>🗑️</button>
             </h3>
 
             <p className="text-gray-600 mb-4 line-clamp-3">
