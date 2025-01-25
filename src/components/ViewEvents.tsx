@@ -31,9 +31,7 @@ const ViewEvents = () => {
       >
         ← Back to Home
       </Link>
-      <p className=" flex justify-center font-bold text-3xl mb-9">
-        All events are here
-      </p>
+      <p className=" flex justify-center font-bold text-3xl mb-9">All events</p>
       <EventsItem events={events} />
     </div>
   );
